@@ -133,6 +133,15 @@
     </audio>
 
     <script>
+        const preloadedVideos = {};
+
+        document.querySelectorAll('.pad').forEach(pad => {
+            const videoPath = `./assets/videos/${pad.dataset.video}`;
+            preloadedVideos[videoPath] = document.createElement('video');
+            preloadedVideos[videoPath].src = videoPath;
+            preloadedVideos[videoPath].load();
+        });
+
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => handlePadClick(pad));
             pad.addEventListener('touchstart', (event) => {

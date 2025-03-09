@@ -41,7 +41,7 @@
             background-color: #222;
             color: white;
             font-family: Arial, sans-serif;
-            padding-top: 10px;
+            padding-top: 20px;
         }
         .video-container {
             width: 90vw;
@@ -124,13 +124,15 @@
     </audio>
 
     <script>
-        document.querySelectorAll('.pad').forEach(pad => {
-            const videoFile = pad.dataset.video;
-            const thumbnailFile = videoFile.replace('.mp4', '').replace('sample', 'thumb') + '.jpg';
-            const imagePath = `./images/${thumbnailFile}`;
-            pad.style.backgroundImage = `url('${imagePath}')`;
-        });
+document.querySelectorAll('.pad').forEach(pad => {
+    const videoFile = pad.dataset.video;
+    const videoNumber = videoFile.match(/\d+/)[0]; // 数字のみ取得
+    const thumbnailFile = `thumb${videoNumber}.jpg`; // `thumb1.jpg` の形式に変換
+    const imagePath = `./images/${thumbnailFile}`;
+    pad.style.backgroundImage = `url('${imagePath}')`;
+});
 
+      
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => handlePadClick(pad));
         });

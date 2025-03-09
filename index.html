@@ -1,12 +1,20 @@
-<style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>動画サンプラー</title>
+    <style>
         .logo {
-            width: 40px;
-            height: auto;
+            height: 60px;
+            width: auto;
         }
         .audio-controls {
             margin-top: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
         .audio-button {
             display: flex;
@@ -33,7 +41,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; gap: 10px;
+            justify-content: center;
+            gap: 10px;
             height: 100vh;
             overflow: hidden;
             background-color: #222;
@@ -113,10 +122,9 @@
         <div class="pad" data-video="sample8.mp4"></div>
     </div>
     
-    <div class="audio-controls" style="display: flex; align-items: center; gap: 10px;">
+    <div class="audio-controls">
         <button class="audio-button" onclick="toggleMusic()">▶</button>
-        <img src="./assets/images/logo.jpg" alt="Logo" class="logo">
-        <button class="audio-button" onclick="toggleMusic()">▶</button>
+        <img src="./assets/images/logo.png" alt="Logo" class="logo">
     </div>
 
     <audio id="background-music" loop>
@@ -124,13 +132,11 @@
     </audio>
 
     <script>
-document.querySelectorAll('.pad').forEach(pad => {
-    const padIndex = Array.from(document.querySelectorAll('.pad')).indexOf(pad) + 1;
-    const imagePath = `./assets/images/thumb${padIndex}.jpg`;
-    pad.style.backgroundImage = `url('${imagePath}')`;
-});
+        document.querySelectorAll('.pad').forEach((pad, index) => {
+            const imagePath = `./assets/images/thumb${index + 1}.jpg`;
+            pad.style.backgroundImage = `url('${imagePath}')`;
+        });
 
-      
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => handlePadClick(pad));
         });

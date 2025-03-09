@@ -96,7 +96,7 @@
 <body>
     <div class="video-container">
         <video id="main-video" loop autoplay muted style="display: none;">
-            
+            <source id="video-source" src="" type="video/mp4">
         </video>
     </div>
     
@@ -136,11 +136,14 @@
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
-                const source = videoScreen.querySelector("source");
-                videoScreen.style.display = 'block';
+                const source = document.getElementById("video-source");
+                
                 source.src = `./assets/videos/${pad.dataset.video.replace('.gif', '.mp4')}`;
                 videoScreen.load();
+                videoScreen.style.display = 'block';
                 videoScreen.play();
+            });
+        });
             });
         });
                 

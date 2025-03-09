@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>動画サンプラー</title>
-    <style>
+<style>
+        .logo {
+            width: 40px;
+            height: auto;
+        }
         .audio-controls {
             margin-top: 20px;
             display: flex;
@@ -115,7 +113,9 @@
         <div class="pad" data-video="sample8.mp4"></div>
     </div>
     
-    <div class="audio-controls">
+    <div class="audio-controls" style="display: flex; align-items: center; gap: 10px;">
+        <button class="audio-button" onclick="toggleMusic()">▶</button>
+        <img src="./assets/images/logo.jpg" alt="Logo" class="logo">
         <button class="audio-button" onclick="toggleMusic()">▶</button>
     </div>
 

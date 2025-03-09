@@ -95,8 +95,8 @@
 </head>
 <body>
     <div class="video-container">
-        <video id="main-video" loop autoplay muted>
-            <source src="./assets/videos/sample1.mp4" type="video/mp4">
+        <video id="main-video" loop autoplay muted style="display: none;">
+            
         </video>
     </div>
     
@@ -125,7 +125,7 @@
             const music = document.getElementById("background-music");
             const button = document.querySelector(".audio-button");
             if (music.paused) {
-                music.play();
+                music.play().catch(error => console.error('Audio playback failed:', error));
                 button.textContent = "⏸";
             } else {
                 music.pause();
@@ -137,14 +137,14 @@
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
                 const source = videoScreen.querySelector("source");
+                videoScreen.style.display = 'block';
                 source.src = `./assets/videos/${pad.dataset.video.replace('.gif', '.mp4')}`;
                 videoScreen.load();
                 videoScreen.play();
             });
         });
                 
-                if (videoScreen.src !== `./assets/gifs/${pad.dataset.video}`) {
-                    videoScreen.src = `./assets/gifs/${pad.dataset.video}?t=${new Date().getTime()}`;
+                ?t=${new Date().getTime()}`;
                 }
             });
         });

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>動画サンプラー</title>
     <style>
         body {
@@ -17,8 +17,9 @@
             padding-top: 20px; /* 上部に隙間を追加 */
         }
         .video-container {
-            width: 640px;
-            height: 480px;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 4 / 3;
             border: 2px solid black; /* 枠を細くし、黒色に変更 */
             background-color: black;
             display: flex;
@@ -29,22 +30,22 @@
             margin-bottom: 20px; /* PADと重ならないように調整 */
         }
         .video-container video {
-            width: 640px;
-            height: 480px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: none; /* PADを叩くまで非表示 */
         }
         .video-placeholder {
-            width: 640px;
-            height: 480px;
+            width: 100%;
+            height: 100%;
             background-color: black;
-            position: relative;
+            position: absolute;
             top: 0;
             left: 0;
         }
         .pad-container {
             display: grid;
-            grid-template-columns: repeat(3, minmax(100px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             width: 100%;
             max-width: 480px;
@@ -106,7 +107,7 @@
 <body>
     <div class="video-container">
         <div class="video-placeholder" id="video-placeholder"></div>
-        <video id="main-video" loop autoplay muted>
+        <video id="main-video" loop autoplay muted playsinline>
             <source id="video-source" src="" type="video/mp4">
         </video>
     </div>

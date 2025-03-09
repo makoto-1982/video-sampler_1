@@ -158,10 +158,12 @@
             if (videoScreen.src.includes(newSrc)) {
                 videoScreen.currentTime = 0;
                 videoScreen.play();
+            videoScreen.style.opacity = '1';
                 return;
             }
             
             videoScreen.src = newSrc;
+            videoScreen.style.opacity = '0';
             videoScreen.style.display = 'block';
             placeholder.style.display = 'none';
             videoScreen.play();

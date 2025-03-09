@@ -156,21 +156,16 @@
             const music = document.getElementById("background-music");
             const button = document.querySelector(".audio-button");
             
-            if (!music.readyToPlay) {
-                music.addEventListener("canplaythrough", () => {
-                    music.play().then(() => {
-                        button.textContent = "⏸";
-                    }).catch(error => console.error('Audio playback failed:', error));
-                }, { once: true });
+            if (music.paused) {
+                music.play().then(() => {
+                    button.textContent = "⏸";
+                }).catch(error => {
+                    console.error('Audio playback failed:', error);
+                    alert('音楽の再生に失敗しました。画面をタップしてから再試行してください。');
+                });
             } else {
-                if (music.paused) {
-                    music.play().then(() => {
-                        button.textContent = "⏸";
-                    }).catch(error => console.error('Audio playback failed:', error));
-                } else {
-                    music.pause();
-                    button.textContent = "▶";
-                }
+                music.pause();
+                button.textContent = "▶";
             }
         }
     </script>

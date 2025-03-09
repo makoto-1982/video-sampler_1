@@ -134,14 +134,25 @@
     </audio>
 
     <script>
+        const preloadedVideos = {};
+
+        document.querySelectorAll('.pad').forEach(pad => {
+            const videoPath = `./assets/videos/${pad.dataset.video}`;
+            const videoElement = document.createElement("video");
+            videoElement.src = videoPath;
+            videoElement.load();
+            preloadedVideos[videoPath] = videoElement;
+        });
+
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
-                const source = document.getElementById("video-source");
                 const placeholder = document.getElementById("video-placeholder");
                 const newSrc = `./assets/videos/${pad.dataset.video}`;
                 
                 if (videoScreen.src.includes(newSrc)) {
+                    videoScreen.currentTime = 0;
+                    videoScreen.play();
                     return;
                 }
                 

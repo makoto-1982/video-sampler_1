@@ -125,7 +125,8 @@
 
     <script>
 document.querySelectorAll('.pad').forEach(pad => {
-    const imagePath = `./assets/images/thumb1.jpg`;
+    const padIndex = Array.from(document.querySelectorAll('.pad')).indexOf(pad) + 1;
+    const imagePath = `./assets/images/thumb${padIndex}.jpg`;
     pad.style.backgroundImage = `url('${imagePath}')`;
 });
 

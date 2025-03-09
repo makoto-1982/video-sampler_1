@@ -125,10 +125,7 @@
 
     <script>
 document.querySelectorAll('.pad').forEach(pad => {
-    const videoFile = pad.dataset.video;
-    const videoNumber = videoFile.match(/\d+/)[0]; // 数字のみ取得
-    const thumbnailFile = `thumb${videoNumber}.jpg`; // `thumb1.jpg` の形式に変換
-    const imagePath = `./images/${thumbnailFile}`;
+    const imagePath = `./images/thumb1.jpg`;
     pad.style.backgroundImage = `url('${imagePath}')`;
 });
 

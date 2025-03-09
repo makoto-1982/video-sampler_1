@@ -157,13 +157,13 @@
             
             if (videoScreen.src.includes(newSrc)) {
                 videoScreen.currentTime = 0;
-                videoScreen.play();
+                videoScreen.load(); videoScreen.play();
             videoScreen.style.visibility = 'visible';
                 return;
             }
             
             videoScreen.src = newSrc;
-            videoScreen.style.visibility = 'hidden';
+            videoScreen.style.visibility = 'visible';
             videoScreen.style.display = 'block';
             placeholder.style.display = 'none';
             videoScreen.play();

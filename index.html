@@ -18,6 +18,7 @@
             user-select: none;
             position: relative;
             background-size: cover;
+            background-repeat: no-repeat;
             background-position: center;
         }
         .pad span {
@@ -159,8 +160,10 @@
     <script>
         document.querySelectorAll('.pad').forEach(pad => {
             const videoFile = pad.dataset.video;
-            const thumbnailFile = videoFile.replace('.mp4', '.jpg');
-            pad.style.backgroundImage = `url('./images/${thumbnailFile}')`;
+            const thumbnailFile = videoFile.replace('.mp4', '').replace('sample', 'thumb') + '.jpg';
+            const imagePath = `./images/${thumbnailFile}`;
+            console.log('Loading thumbnail:', imagePath);
+            pad.style.backgroundImage = `url('${imagePath}')`;
         });
         const preloadedVideos = {};
 

@@ -38,11 +38,10 @@
             align-items: center;
             justify-content: center;
         }
-        .video-screen video {
+        .video-screen img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
         }
         .pad-container {
             display: grid;
@@ -108,7 +107,7 @@
 <body>
     <div class="video-container">
         <div class="video-screen">
-            <video id="main-video" autoplay loop muted style="display: block;"></video>
+            <img id="main-video" src="" alt="">
         </div>
     </div>
     
@@ -147,10 +146,8 @@
 
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => {
-                const video = document.getElementById("main-video");
-                video.src = `./assets/gifs/${pad.dataset.video}`;
-                video.style.display = 'block';
-                video.play();
+                const videoScreen = document.getElementById("main-video");
+                videoScreen.src = `./assets/gifs/${pad.dataset.video}`;
             });
         });
     </script>

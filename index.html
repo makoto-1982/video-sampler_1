@@ -34,6 +34,9 @@
             top: 72px;
             left: 100px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .video-screen video {
             width: 100%;
@@ -105,7 +108,7 @@
 <body>
     <div class="video-container">
         <div class="video-screen">
-            <video id="main-video" autoplay loop muted></video>
+            <video id="main-video" autoplay loop muted style="display: block;"></video>
         </div>
     </div>
     

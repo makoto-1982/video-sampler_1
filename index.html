@@ -25,12 +25,21 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.2);
+            position: relative;
         }
-        .video-container img {
-            width: 640px;
-            height: 480px;
+        .video-container video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            display: block; /* PADを叩いていないときも表示を維持 */
+            display: none; /* PADを叩くまで非表示 */
+        }
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         .pad-container {
             display: grid;
@@ -95,21 +104,22 @@
 </head>
 <body>
     <div class="video-container">
-        <video id="main-video" loop autoplay muted style="display: none;">
+        <div class="video-placeholder" id="video-placeholder"></div>
+        <video id="main-video" loop autoplay muted>
             <source id="video-source" src="" type="video/mp4">
         </video>
     </div>
     
     <div class="pad-container">
-        <div class="pad" data-video="sample1.gif" style="background-image: url('./assets/images/thumb1.jpg');"><span>Q</span></div>
-        <div class="pad" data-video="sample2.gif" style="background-image: url('./assets/images/thumb2.jpg');"><span>W</span></div>
-        <div class="pad" data-video="sample3.gif" style="background-image: url('./assets/images/thumb3.jpg');"><span>E</span></div>
-        <div class="pad" data-video="sample4.gif" style="background-image: url('./assets/images/thumb4.jpg');"><span>A</span></div>
-        <div class="pad" data-video="sample5.gif" style="background-image: url('./assets/images/thumb5.jpg');"><span>S</span></div>
-        <div class="pad" data-video="sample6.gif" style="background-image: url('./assets/images/thumb6.jpg');"><span>D</span></div>
-        <div class="pad" data-video="sample7.gif" style="background-image: url('./assets/images/thumb7.jpg');"><span>Z</span></div>
-        <div class="pad" data-video="sample8.gif" style="background-image: url('./assets/images/thumb8.jpg');"><span>X</span></div>
-        <div class="pad" data-video="sample9.gif" style="background-image: url('./assets/images/thumb9.jpg');"><span>C</span></div>
+        <div class="pad" data-video="sample1.mp4" style="background-image: url('./assets/images/thumb1.jpg');"><span>Q</span></div>
+        <div class="pad" data-video="sample2.mp4" style="background-image: url('./assets/images/thumb2.jpg');"><span>W</span></div>
+        <div class="pad" data-video="sample3.mp4" style="background-image: url('./assets/images/thumb3.jpg');"><span>E</span></div>
+        <div class="pad" data-video="sample4.mp4" style="background-image: url('./assets/images/thumb4.jpg');"><span>A</span></div>
+        <div class="pad" data-video="sample5.mp4" style="background-image: url('./assets/images/thumb5.jpg');"><span>S</span></div>
+        <div class="pad" data-video="sample6.mp4" style="background-image: url('./assets/images/thumb6.jpg');"><span>D</span></div>
+        <div class="pad" data-video="sample7.mp4" style="background-image: url('./assets/images/thumb7.jpg');"><span>Z</span></div>
+        <div class="pad" data-video="sample8.mp4" style="background-image: url('./assets/images/thumb8.jpg');"><span>X</span></div>
+        <div class="pad" data-video="sample9.mp4" style="background-image: url('./assets/images/thumb9.jpg');"><span>C</span></div>
     </div>
     
     <div class="audio-controls">
@@ -137,18 +147,13 @@
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
                 const source = document.getElementById("video-source");
+                const placeholder = document.getElementById("video-placeholder");
                 
-                source.src = `./assets/videos/${pad.dataset.video.replace('.gif', '.mp4')}`;
+                source.src = `./assets/videos/${pad.dataset.video}`;
                 videoScreen.load();
                 videoScreen.style.display = 'block';
+                placeholder.style.display = 'none';
                 videoScreen.play();
-            });
-        });
-            });
-        });
-                
-                ?t=${new Date().getTime()}`;
-                }
             });
         });
     </script>

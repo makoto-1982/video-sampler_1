@@ -9,12 +9,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
             background-color: #222;
             color: white;
             font-family: Arial, sans-serif;
-            margin-top: 60px; /* 上部に隙間を追加 */
+            padding-top: 20px; /* 上部に隙間を追加 */
         }
         .video-container {
             width: 640px;
@@ -134,7 +134,9 @@
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
-                videoScreen.src = `./assets/gifs/${pad.dataset.video}`;
+                if (videoScreen.src !== `./assets/gifs/${pad.dataset.video}`) {
+                    videoScreen.src = `./assets/gifs/${pad.dataset.video}`;
+                }
             });
         });
     </script>

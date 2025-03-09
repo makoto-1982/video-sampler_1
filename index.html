@@ -95,7 +95,9 @@
 </head>
 <body>
     <div class="video-container">
-        <img id="main-video" src="./assets/gifs/sample1.gif" alt="">
+        <video id="main-video" loop autoplay muted>
+            <source src="./assets/gifs/sample1.gif" type="video/mp4">
+        </video>
     </div>
     
     <div class="pad-container">
@@ -134,6 +136,10 @@
         document.querySelectorAll('.pad').forEach(pad => {
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
+                const source = videoScreen.querySelector("source");
+                source.src = `./assets/gifs/${pad.dataset.video}?t=${new Date().getTime()}`;
+                videoScreen.load();
+                videoScreen.play();
                 
                 if (videoScreen.src !== `./assets/gifs/${pad.dataset.video}`) {
                     videoScreen.src = `./assets/gifs/${pad.dataset.video}?t=${new Date().getTime()}`;

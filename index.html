@@ -14,10 +14,9 @@
             background-color: #222;
             color: white;
             font-family: Arial, sans-serif;
-            padding-top: 40px; /* 上部に隙間を追加 */
+            margin-top: 60px; /* 上部に隙間を追加 */
         }
         .video-container {
-            margin-top: 20px;
             width: 640px;
             height: 480px;
             border: 2px solid black; /* 枠を細くし、黒色に変更 */
@@ -96,7 +95,7 @@
 </head>
 <body>
     <div class="video-container">
-        <img id="main-video" src="" alt="">
+        <img id="main-video" src="./assets/gifs/sample1.gif" alt="">
     </div>
     
     <div class="pad-container">
@@ -136,7 +135,6 @@
             pad.addEventListener('click', () => {
                 const videoScreen = document.getElementById("main-video");
                 videoScreen.src = `./assets/gifs/${pad.dataset.video}`;
-                videoScreen.style.display = 'block';
             });
         });
     </script>
